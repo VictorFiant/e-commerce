@@ -5,10 +5,13 @@ import Product from './Product/Product';
 
 import useStyles from './styles'
 
-
+/**
+ * products.map() Get all products and inject in Product
+ */
 const Products = ({ products, onAddToCart }) => {
     const classes = useStyles();
     return (
+        
         <main className={classes.content}>
             <div className={classes.toolbar} />
             <Grid container justify="center" spacing={4}>

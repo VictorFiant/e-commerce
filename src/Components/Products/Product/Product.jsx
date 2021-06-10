@@ -3,7 +3,9 @@ import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } fro
 import { AddShoppingCart } from '@material-ui/icons';
 
 import useStyles from './styles'
-
+/**
+ * Get all of the data per product and render every detail from Commerce.js 
+ */
 const Product = ({ product, onAddToCart }) => {
     const classes = useStyles();
 
@@ -21,8 +23,8 @@ const Product = ({ product, onAddToCart }) => {
                 </div>
                 <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant='body2' color='textSecondary'></Typography>
             </CardContent>
-            <CardActions disableSpacing className={classes.cardActions}>
-                <IconButton arial-label="Add To Cart" onClick={() => onAddToCart(product.id, 1)}>
+            <CardActions disableSpacing className={classes.cardActions}>onClick={() => onAddToCart(product.id, 1)}
+                <IconButton arial-label="Add To Cart" >
                     <AddShoppingCart />
                 </IconButton>
             </CardActions>

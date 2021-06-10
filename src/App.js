@@ -11,15 +11,27 @@ const App = () => {
     const [order, setOrder] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
 
+    /**
+     * Get all of the products from Commercer.js
+     * 
+     */
     const fetchProducts = async () => {
         const { data } = await commerce.products.list();
 
         setProducts(data);
     };
 
+    /**
+     * Get only one product by id from Commerce.js
+     */
+
     const fetchCart = async () => {
         setCart(await commerce.cart.retrieve())
     };
+
+    /**
+     * Take a product and add to Cart
+     */
 
     const handleAddToCart = async (productId, quantity) => {
         const item = await commerce.cart.add(productId, quantity);
@@ -27,17 +39,29 @@ const App = () => {
         setCart(item.cart);
     };
 
+    /*
+    *  Update the cart (quantity) by product Id
+    */
+
     const handleUpdateCartQty = async (productId, quantity) => {
         const { cart } = await commerce.cart.update(productId, { quantity });
 
         setCart(cart);
     };
+     /*
+    *  Remove products one by one  by product Id
+    */
 
     const handleRemoveFromCart = async (productId) => {
         const { cart } = await commerce.cart.remove(productId)
 
         setCart(cart);
     };
+     
+    /*
+    *  Empty the cart 
+    */
+
     const handleEmptyCart = async () => {
         const { cart } = await commerce.cart.empty()
 
@@ -48,7 +72,9 @@ const App = () => {
         const newCart = await commerce.cart.refresh();
 
         setCart(newCart);
-    }
+    };
+
+    
 
     const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
         try {
